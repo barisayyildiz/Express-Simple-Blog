@@ -1,0 +1,49 @@
+/*---------------HEADER---------------*/
+
+#header
+{
+	color: white;
+	text-align: center;
+	border: 1px solid black;
+	font-family: "Verdana";
+	background-image: url(image.png);
+	background-size: cover;
+	padding: 70px 0px;
+}
+
+
+.social-media-icon
+{
+	font-size: 2.5em;
+}
+
+.social-media-icon a
+{
+	color: inherit;
+}
+
+#create
+{
+	color: inherit;
+	font-size: 1.5em;
+	font-style: italic;
+}
+
+a
+{
+	color: inherit;
+	text-decoration: none;
+}
+
+
+/*---------------ENTRIES---------------*/
+ul
+{
+	list-style: none;
+}
+
+#main
+{
+	text-align: center;
+}
+
