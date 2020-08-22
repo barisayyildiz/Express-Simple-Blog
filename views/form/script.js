@@ -25,7 +25,6 @@ document.getElementById("submit").addEventListener("click", event => {
 	})
 	.then(response => response.json())
 	.then(data => {
-		window.data = data;
 		window.open("../", "_self");
 	})
 

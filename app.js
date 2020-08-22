@@ -22,11 +22,15 @@ app.engine('handlebars', expbs());
 app.set('view engine', 'handlebars');
 
 // Dynamic page that shows all the blog posts
-
+// Ana sayfa
 app.get("/", (req, res) => {
 
 	database.find({}, (err, docs) => {
-		res.render('index', {blogs: docs});
+
+		docs = sortByDateTime(docs);
+
+		res.render('index', {blogs : docs});
+		//res.json({blogs : docs});
 	})
 
 })
@@ -36,7 +40,15 @@ app.get("/", (req, res) => {
 app.post("/submit", (req, res) => {
 	
 	console.log("request taken...");
-	database.insert({title : req.body.title, text : req.body.text});
+
+	//get the current date
+	let date = new Date();
+	let string = `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
+
+	database.insert({title : req.body.title, text : req.body.text, date : string, dateMil : Date.now()});
+
+	res.redirect();
+	//console.log("12323");
 
 	/*
 	database.find({}, (err, docs) => {
@@ -51,3 +63,24 @@ app.post("/submit", (req, res) => {
 
 });
 
+function sortByDateTime(database)
+{
+	let temp;
+	for(let i=0; i<database.length; i++)
+	{
+		for(let j=i+1; j<database.length; j++)
+		{
+			if(database[i].dateMil < database[j].dateMil)
+			{
+				temp = database[i];
+
+				console.log(temp);
+
+				database[i] = database[j];
+				database[j] = temp;
+			}
+		}
+	}
+
+	return database;
+}
