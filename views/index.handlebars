@@ -1,9 +1,16 @@
-<ul>
+
+<div class="list-group">
 
 	{{#each blogs}}
-		<li>{{this}}</li>
+
+		<a class="list-group-item list-group-item-action flex-column align-items-start">
+			<div class="d-flex w-100 justify-content-between">
+				<h5 class="mb-1">{{this.title}}</h5>
+				<small>3 days ago</small>
+			</div>
+			<p class="mb-1 text">{{this.text}}</p>
+			<!--<small>Donec id elit non mi porta.</small>-->
+		</a>
 	{{/each}}
-
-</ul>
-
-<h1> {{name}} </h1>
+	
+</div>

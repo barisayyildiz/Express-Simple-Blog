@@ -9,6 +9,13 @@ database.loadDatabase();
 
 //database.insert({deneme : "baris_ayyildiz"}, () => console.log("database insert..."))
 
+let db = [
+
+{title : "Deneme metni", text : "asdqwdasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwqwdawdqw"},
+{"title":"Başlık","text":"Deneme"}
+
+];
+
 
 app.listen(3000, () => console.log("listening port number 3000..."));
 
@@ -23,13 +30,11 @@ app.set('view engine', 'handlebars');
 
 // Dynamic page that shows all the blog posts
 
-app.get("/", async (req, res) => {
+app.get("/", (req, res) => {
 
-	let obj = {name : "baris", surname : "ayyildiz"};
+	let obj = {name : "baris", surname : "ayyildiz", blogs : db};
 
-	database.find({}, (err, docs) => {
-		obj.blogs = docs;
-	})
+	console.log(db[0].title);
 	
 	res.render('index', obj);
 
@@ -45,24 +50,13 @@ app.get("/", async (req, res) => {
 
 })
 
-async function getDataBase(database)
-{
-	let array = [];
-
-	database.find({}, (err ,docs) => {
-		docs.forEach(element => array.push(element));
-		return array;
-	});
-
-
-}
-
 
 // Get the blog post and save it to the database
 app.post("/submit", (req, res) => {
 	
 	console.log("request taken...");
 
+	/*
 	//console.log(req.body);
 	database.insert({title : req.body.title, text : req.body.text});
 
@@ -73,6 +67,12 @@ app.post("/submit", (req, res) => {
 		res.json(docs);
 		res.end();
 	})
+
+	*/
+
+	db.push({title : req.body.title, text : req.body.text});
+	req.json(db);
+	res.end();
 
 
 });

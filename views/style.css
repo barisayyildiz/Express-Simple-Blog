@@ -1,10 +1,14 @@
 /*---------------HEADER---------------*/
 
+body
+{
+	font-family: "Verdana";
+}
+
 #header
 {
 	color: white;
 	text-align: center;
-	border: 1px solid black;
 	font-family: "Verdana";
 	background-image: url(image.png);
 	background-size: cover;
@@ -37,13 +41,28 @@ a
 
 
 /*---------------ENTRIES---------------*/
-ul
-{
-	list-style: none;
-}
 
 #main
 {
 	text-align: center;
 }
 
+.list-group
+{
+	width: 50%;
+	margin: 20px auto;
+}
+
+.list-group-item
+{
+	border: none;
+	border-bottom: 1px solid grey;
+	border-width: thin;
+}
+
+.text
+{
+	padding: 50px 15px;
+	word-wrap: break-word;
+	white-space: pre-wrap;
+}
