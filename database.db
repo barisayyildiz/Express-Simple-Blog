@@ -1,3 +1,6 @@
 {"title":"Başlık","text":"deneme","_id":"0bUCrRL2Agv9Cozf"}
 {"title":"Başlık","text":"Deneme","_id":"2YHnA7ysGEoaXfXn"}
 {"title":"Başlık","text":"deneme","_id":"4m5E1VGAz0DvYBjF"}
+{"title":"Middleware functions","text":"What is this next()?\nA middleware is basically a function that will the receive the Request and Response objects, just like your route Handlers do. As a third argument you have another function which you should call once your middleware code completed. This means you can wait for asynchronous database or network operations to finish before proceeding to the next step. This might look like the following:","_id":"4Ry9vUoxgYkCp1ZL"}
+{"title":"Başlık","text":"deneme metni\nasdasdasd\nasdasd","_id":"858ibvN6y6179Wjk"}
+{"title":"Başlık","text":"#Ana başlık\nyazı...","_id":"iSRW54P1RAqMFZbr"}

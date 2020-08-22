@@ -9,13 +9,6 @@ database.loadDatabase();
 
 //database.insert({deneme : "baris_ayyildiz"}, () => console.log("database insert..."))
 
-let db = [
-
-{title : "Deneme metni", text : "asdqwdasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwasdqwdqwdawdqwqwdawdqw"},
-{"title":"Başlık","text":"Deneme"}
-
-];
-
 
 app.listen(3000, () => console.log("listening port number 3000..."));
 
@@ -32,21 +25,9 @@ app.set('view engine', 'handlebars');
 
 app.get("/", (req, res) => {
 
-	let obj = {name : "baris", surname : "ayyildiz", blogs : db};
-
-	console.log(db[0].title);
-	
-	res.render('index', obj);
-
-	console.log(obj);
-
-
-	//console.log(array);	
-
-	//console.log(getDataBase(database));
-
-
-	//res.send(database.find({}, (err, docs) => JSON.stringify(docs));
+	database.find({}, (err, docs) => {
+		res.render('index', {blogs: docs});
+	})
 
 })
 
@@ -55,11 +36,9 @@ app.get("/", (req, res) => {
 app.post("/submit", (req, res) => {
 	
 	console.log("request taken...");
-
-	/*
-	//console.log(req.body);
 	database.insert({title : req.body.title, text : req.body.text});
 
+	/*
 	database.find({}, (err, docs) => {
 
 		//database içerisindeki tüm veriyi client-side'a yolla
@@ -67,12 +46,7 @@ app.post("/submit", (req, res) => {
 		res.json(docs);
 		res.end();
 	})
-
 	*/
-
-	db.push({title : req.body.title, text : req.body.text});
-	req.json(db);
-	res.end();
 
 
 });
