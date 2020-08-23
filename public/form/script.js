@@ -1,10 +1,5 @@
 document.getElementById("submit").addEventListener("click", event => {
 
-	/*
-	let data = document.getElementById("text").value;
-	console.log(document.getElementById("text").value, document.getElementById("title").value);
-	*/
-
 	let data = {};
 	data.title = document.getElementById("title").value;
 	data.text = document.getElementById("text").value;
@@ -22,20 +17,8 @@ document.getElementById("submit").addEventListener("click", event => {
     },
     body: JSON.stringify(data)
 	
-	})
-	.then(response => response.json())
-	.then(data => {
-		window.data = data;
-		window.open("../", "_self");
-	})
+	});
 
-	/*
-	.then(response => {
-
-		window.open("../", "_self");
-		console.log("asd");
-
-	})*/
 
 
 })
