@@ -3,14 +3,27 @@
 
 	{{#each blogs}}
 
-		<a class="list-group-item list-group-item-action flex-column align-items-start">
-			<div class="d-flex w-100 justify-content-between">
-				<h4 class="mb-1 title">{{this.title}}</h4>
-				<small>{{this.date}}</small>
-			</div>
-			<p class="mb-1 text">{{this.text}}</p>
-			<!--<small>Donec id elit non mi porta.</small>-->
-		</a>
+		{{#if @first}}
+
+			<a class="list-group-item list-group-item-action flex-column align-items-start active">
+				<div class="d-flex w-100 justify-content-between">
+					<h4 class="mb-1 title">{{this.title}}</h4>
+					<small>{{this.date}}</small>
+				</div>
+				<p class="mb-1 text">{{this.text}}</p>
+			</a>
+
+		{{else}}
+
+			<a class="list-group-item list-group-item-action flex-column align-items-start">
+				<div class="d-flex w-100 justify-content-between">
+					<h4 class="mb-1 title">{{this.title}}</h4>
+					<small>{{this.date}}</small>
+				</div>
+				<p class="mb-1 text">{{this.text}}</p>
+			</a>
+		{{/if}}
+
 	{{/each}}
 	
 </div>

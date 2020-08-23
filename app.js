@@ -29,6 +29,8 @@ app.get("/", (req, res) => {
 
 		docs = sortByDateTime(docs);
 
+		console.log(docs);
+
 		res.render('index', {blogs : docs});
 		//res.json({blogs : docs});
 	})
@@ -73,9 +75,6 @@ function sortByDateTime(database)
 			if(database[i].dateMil < database[j].dateMil)
 			{
 				temp = database[i];
-
-				console.log(temp);
-
 				database[i] = database[j];
 				database[j] = temp;
 			}
