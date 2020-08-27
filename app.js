@@ -13,6 +13,15 @@ app.listen(3000, () => console.log("listening port number 3000..."));
 app.use(express.static('./views/'));
 app.use(express.json({limit : "1mb"}));
 
+/*
+//Body Parsing
+
+app.use(express.urlencoded({
+    extended : false
+}));
+app.use(express.json());
+*/
+
 // Setting the view engine, express-handlebars
 app.engine('handlebars', expbs());
 app.set('view engine', 'handlebars');
