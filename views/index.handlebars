@@ -11,7 +11,7 @@
 					<small>{{this.date}}</small>
 				</div>
 				<p class="mb-1 text">{{this.text}}</p>
-				<!--<button type="button" class="btn btn-danger" id="dltBtn" myattr="{{this_id}}" onclick="deleteItem(this)">Delete</button>-->
+				
 				<form method="POST" action="/delete/{{this._id}}?_method=DELETE">
 					<input type="hidden" name="_method" value="DELETE">
 					<button type="submit" class="btn btn-danger">Delete</button>
@@ -26,7 +26,7 @@
 					<small>{{this.date}}</small>
 				</div>
 				<p class="mb-1 text">{{this.text}}</p>
-				<!--<button type="button" class="btn btn-danger" id="dltBtn" myattr="{{this_id}}" onclick="deleteItem(this)">Delete</button>-->
+
 				<form method="POST" action="/delete/{{this._id}}?_method=DELETE">
 					<input type="hidden" name="_method" value="DELETE">
 					<button type="submit" class="btn btn-danger">Delete</button>

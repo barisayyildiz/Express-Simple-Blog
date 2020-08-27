@@ -47,17 +47,6 @@ app.get("/", async (req, res) => {
 	console.log(docs);
 	res.render('index', {blogs : docs});
 
-
-	/*
-	database.find({}, (err, docs) => {
-
-		// Sorts the blog entries by the time
-		docs = sortByDateTime(docs);
-
-		res.render('index', {blogs : docs});
-	})
-	*/
-
 })
 
 
@@ -70,9 +59,6 @@ app.post("/submit", (req, res) => {
 	// Generates DD/MM/YYYY format
 	let string = `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
 
-	//database.insert({title : req.body.title, text : req.body.text, date : string, dateMil : Date.now()});
-
-
 	posts.create(
 	{
 		title : req.body.title,
@@ -83,15 +69,7 @@ app.post("/submit", (req, res) => {
 
 });
 
-app.use((req, res, next) => 
-{
-	console.log(req.params);
-	next();
-})
-
 app.delete("/delete/:id", (req, res) => {
-
-	console.log("asd");
 
 	posts.remove({_id : req.params.id}, (err ,docs) => {
 		res.redirect("/");
