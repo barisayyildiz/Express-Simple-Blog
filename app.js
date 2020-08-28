@@ -22,7 +22,6 @@ app.listen(3000, () => console.log("listening port number 3000..."));
 
 // Serves static files
 app.use(express.static('./views/'));
-app.use(express.json({limit : "1mb"}));
 
 // Method override
 app.use(methodOverride('_method'));
@@ -68,6 +67,22 @@ app.post("/submit", (req, res) => {
 	})
 
 });
+
+// Displaying posts
+app.get("/posts/:id", async (req, res) => {
+	console.log(req.params);
+
+	let post = await posts.findById(req.params.id).lean();
+	console.log(post);
+	res.render("singlePost", {
+		layout : 'posts.handlebars',
+		post : post
+	});
+	
+	//res.end();
+})
+
+
 
 app.delete("/delete/:id", (req, res) => {
 

@@ -5,7 +5,7 @@
 
 		{{#if @first}}
 
-			<a class="list-group-item list-group-item-action flex-column align-items-start active" >
+			<a class="list-group-item list-group-item-action flex-column align-items-start active" href="/posts/{{this._id}}">
 				<div class="d-flex w-100 justify-content-between">
 					<h4 class="mb-1 title">{{this.title}}</h4>
 					<small>{{this.date}}</small>
@@ -20,7 +20,7 @@
 
 		{{else}}
 
-			<a class="list-group-item list-group-item-action flex-column align-items-start">
+			<a class="list-group-item list-group-item-action flex-column align-items-start" href="/posts/{{this._id}}">
 				<div class="d-flex w-100 justify-content-between">
 					<h4 class="mb-1 title">{{this.title}}</h4>
 					<small>{{this.date}}</small>
