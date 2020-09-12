@@ -2,9 +2,9 @@ const express = require("express");
 const app = express();
 const expbs = require("express-handlebars");
 const mongoose = require("mongoose");
-var methodOverride = require('method-override')
+const methodOverride = require('method-override')
 
-mongoose.connect("mongodb://localhost/blog");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/blog");
 
 const schema = mongoose.Schema(
 {
@@ -15,10 +15,10 @@ const schema = mongoose.Schema(
 });
 
 
-const posts = mongoose.model('posts', schema);
+const posts = mongoose.model('posts', schema, 'posts');
 
-
-app.listen(3000, () => console.log("listening port number 3000..."));
+let portNumber = process.env.PORT || 3000;
+app.listen(portNumber, () => console.log(`Listening the port number ${portNumber}`));
 
 // Serves static files
 app.use(express.static('./views/'));
@@ -27,7 +27,6 @@ app.use(express.static('./views/'));
 app.use(methodOverride('_method'));
 
 //Body Parsing
-
 app.use(express.urlencoded({
     extended : false
 }));
@@ -43,7 +42,6 @@ app.get("/", async (req, res) => {
 
 	let docs = await posts.find({}).lean();
 	docs = sortByDateTime(docs);
-	console.log(docs);
 	res.render('index', {blogs : docs});
 
 })
@@ -70,23 +68,20 @@ app.post("/submit", (req, res) => {
 
 // Displaying posts
 app.get("/posts/:id", async (req, res) => {
-	console.log(req.params);
 
 	let post = await posts.findById(req.params.id).lean();
-	console.log(post);
 	res.render("singlePost", {
 		layout : 'posts.handlebars',
 		post : post
 	});
-	
-	//res.end();
+
 })
 
 
 
 app.delete("/delete/:id", (req, res) => {
 
-	posts.remove({_id : req.params.id}, (err ,docs) => {
+	posts.deleteOne({_id : req.params.id}, (err ,docs) => {
 		res.redirect("/");
 	})
 

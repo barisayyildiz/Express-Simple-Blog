@@ -1,15 +1,9 @@
 /*---------------HEADER---------------*/
 
-body
-{
-	font-family: "Verdana";
-}
-
 #header
 {
 	color: white;
 	text-align: center;
-	font-family: "Verdana";
 	background-image: url(image.png);
 	background-size: cover;
 	padding: 70px 0px;
