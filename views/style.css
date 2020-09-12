@@ -77,3 +77,23 @@
 {
 	float : right;
 }
+
+@media only screen and (max-width: 900px) {
+
+	.list-group
+	{
+		width: 80%;
+	}
+
+}
+
+@media only screen and (max-width: 500px) {
+
+	.list-group
+	{
+		width: 95%;
+	}
+
+}
+
+
