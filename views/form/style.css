@@ -32,3 +32,22 @@ a:hover
 	text-decoration: none;
 }
 
+@media only screen and (max-width: 900px) {
+
+	#form-wrapper
+	{
+		width: 80%;
+	}
+
+}
+
+@media only screen and (max-width: 500px) {
+
+	#form-wrapper
+	{
+		width: 95%;
+	}
+
+}
+
+
